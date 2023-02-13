@@ -1,11 +1,11 @@
 <?php
-    define('myeshop', true);
-    include("include/db_connect.php");
-    include("functions/functions.php");
-    session_start();
-    include("include/auth_cookie.php");
-
-    $id = clear_string($_GET["id"]);
+   define('myeshop', true); 
+   include("include/db_connect.php");
+   include("functions/functions.php");
+   session_start();
+   include("include/auth_cookie.php");
+  
+     $id = clear_string($_GET["id"]);
      $action = clear_string($_GET["action"]);
     
    switch ($action) {
@@ -19,29 +19,84 @@
         break;
         
     }
+    
+if (isset($_POST["submitdata"]))
+{
+if ( $_SESSION['auth'] == 'yes_auth' ) 
+ {
+        
+    mysql_query("INSERT INTO orders(order_datetime,order_dostavka,order_fio,order_address,order_phone,order_note,order_email)
+                        VALUES( 
+                             NOW(),
+                            '".$_POST["order_delivery"]."',                 
+                            '".$_SESSION['auth_surname'].' '.$_SESSION['auth_name'].' '.$_SESSION['auth_patronymic']."',
+                            '".$_SESSION['auth_address']."',
+                            '".$_SESSION['auth_phone']."',
+                            '".$_POST['order_note']."',
+                            '".$_SESSION['auth_email']."'                              
+                            )",$link);         
 
-    if (isset($_POST["submitdata"])) {
-        $_SESSION["order_delivery"] = $_POST["order_delivery"];
-        $_SESSION["order_fio"] = $_POST["order_fio"];
-        $_SESSION["order_email"] = $_POST["order_email"];
-        $_SESSION["order_phone"] = $_POST["order_phone"];
-        $_SESSION["order_address"] = $_POST["order_address"];
-        $_SESSION["order_note"] = $_POST["order_note"];
+ }else
+ {
+$_SESSION["order_delivery"] = $_POST["order_delivery"];
+$_SESSION["order_fio"] = $_POST["order_fio"];
+$_SESSION["order_email"] = $_POST["order_email"];
+$_SESSION["order_phone"] = $_POST["order_phone"];
+$_SESSION["order_address"] = $_POST["order_address"];
+$_SESSION["order_note"] = $_POST["order_note"];
 
-        header("Location: cart.php?action=completion");
-    }
+    mysql_query("INSERT INTO orders(order_datetime,order_dostavka,order_fio,order_address,order_phone,order_note,order_email)
+                        VALUES( 
+                             NOW(),
+                            '".clear_string($_POST["order_delivery"])."',                   
+                            '".clear_string($_POST["order_fio"])."',
+                            '".clear_string($_POST["order_address"])."',
+                            '".clear_string($_POST["order_phone"])."',
+                            '".clear_string($_POST["order_note"])."',
+                            '".clear_string($_POST["order_email"])."'                   
+                            )",$link);    
+ }
 
-    $result = mysql_query("SELECT * FROM cart,table_products WHERE cart.cart_ip = '{$_SERVER['REMOTE_ADDR']}' AND table_products.products_id = cart.cart_id_product",$link);
-    If (mysql_num_rows($result) > 0)
-    {
-    $row = mysql_fetch_array($result);
-    do 
-    {
-       $int = $int + ($row["price"] * $row["cart_count"]);
-    }
-    while($row = mysql_fetch_array($result));
-    $itogpricecart = $int;
-    }
+                          
+ $_SESSION["order_id"] = mysql_insert_id();                          
+                            
+$result = mysql_query("SELECT * FROM cart WHERE cart_ip = '{$_SERVER['REMOTE_ADDR']}'",$link);
+If (mysql_num_rows($result) > 0)
+{
+$row = mysql_fetch_array($result);    
+
+do{
+
+    mysql_query("INSERT INTO buy_products(buy_id_order,buy_id_product,buy_count_product)
+                        VALUES( 
+                            '".$_SESSION["order_id"]."',                    
+                            '".$row["cart_id_product"]."',
+                            '".$row["cart_count"]."'                   
+                            )",$link);
+
+
+
+} while ($row = mysql_fetch_array($result));
+}
+                            
+header("Location: cart.php?action=completion");
+}      
+
+
+$result = mysql_query("SELECT * FROM cart,table_products WHERE cart.cart_ip = '{$_SERVER['REMOTE_ADDR']}' AND table_products.products_id = cart.cart_id_product",$link);
+If (mysql_num_rows($result) > 0)
+{
+$row = mysql_fetch_array($result);
+
+do
+{ 
+$int = $int + ($row["price"] * $row["cart_count"]); 
+}
+ while ($row = mysql_fetch_array($result));
+ 
+
+   $itogpricecart = $int;
+}     
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
