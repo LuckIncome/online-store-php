@@ -160,7 +160,7 @@
                         </ul>
                         </div>
 
-                        <div class="price-product"><h5><span class="span-count" >1</span> x <span>'.$row["cart_price"].'</span></h5><p>'.$int.'</p></div>
+                        <div class="price-product"><h5><span class="span-count" >'.$row["cart_count"].'</span> x <span>'.$row["cart_price"].'</span></h5><p>'.$int.'</p></div>
                         <div class="delete-cart"><a  href="cart.php?id='.$row["cart_id"].'&action=delete" ><img src="/images/bsk_item_del.png" /></a></div>
 
                         <div id="bottom-cart-line"></div>
@@ -413,7 +413,7 @@
                         </ul>
                         </div>
 
-                        <div class="price-product"><h5><span class="span-count" >1</span> x <span>'.$row["cart_price"].'</span></h5><p>'.$int.'</p></div>
+                        <div class="price-product"><h5><span class="span-count" >'.$row["cart_count"].'</span> x <span>'.$row["cart_price"].'</span></h5><p>'.$int.'</p></div>
                         <div class="delete-cart"><a  href="cart.php?id='.$row["cart_id"].'&action=delete" ><img src="/images/bsk_item_del.png" /></a></div>
 
                         <div id="bottom-cart-line"></div>
