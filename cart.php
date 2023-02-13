@@ -130,7 +130,7 @@
                             } 
                     echo '
                         <div class="block-list-cart">
-
+                        
                         <div class="img-cart">
                         <p align="center"><img src="'.$img_path.'" width="'.$width.'" height="'.$height.'" /></p>
                         </div>
@@ -146,22 +146,38 @@
                         <ul class="input-count-style">
 
                         <li>
-                        <p align="center" class="count-minus">-</p>
+                        <p align="center" iid="'.$row["cart_id"].'" class="count-minus">-</p>
                         </li>
 
                         <li>
-                        <p align="center"><input class="count-input" maxlength="3" type="text" value="'.$row["cart_count"].'" /></p>
+                        <p align="center"><input id="input-id'.$row["cart_id"].'" iid="'.$row["cart_id"].'" class="count-input" maxlength="3" type="text" value="'.$row["cart_count"].'" /></p>
                         </li>
 
                         <li>
-                        <p align="center" class="count-plus">+</p>
+                        <p align="center" iid="'.$row["cart_id"].'" class="count-plus">+</p>
                         </li>
 
                         </ul>
                         </div>
+                        
+                        <div id="tovar'.$row["cart_id"].'" class="price-product">
+                        <h5>
+                            <span class="span-count" >
+                                '.$row["cart_count"].'
+                            </span> x <span>
+                                '.$row["cart_price"].'
+                            </span>
+                        </h5>
+                        <p price="'.$row["cart_price"].'" >
+                            '.group_numerals($int).' руб
+                        </p>
+                        </div>
 
-                        <div class="price-product"><h5><span class="span-count" >'.$row["cart_count"].'</span> x <span>'.$row["cart_price"].'</span></h5><p>'.$int.'</p></div>
-                        <div class="delete-cart"><a  href="cart.php?id='.$row["cart_id"].'&action=delete" ><img src="/images/bsk_item_del.png" /></a></div>
+                        <div class="delete-cart">
+                            <a  href="cart.php?id='.$row["cart_id"].'&action=delete" >
+                                <img src="/images/bsk_item_del.png" />
+                            </a>
+                        </div>
 
                         <div id="bottom-cart-line"></div>
                         </div>
@@ -170,7 +186,7 @@
                      while ($row = mysql_fetch_array($result));
                      
                      echo '
-                     <h2 class="itog-price" align="right">Итого: <strong>'.$all_price.'</strong> руб.</h2>
+                     <h2 class="itog-price" align="right">Итого: <strong>'.group_numerals($all_price).'</strong> руб.</h2>
                      <p align="right" class="button-next" ><a href="cart.php?action=confirm" >Далее</a></p> 
                      ';
                       
@@ -399,22 +415,37 @@
                         <ul class="input-count-style">
 
                         <li>
-                        <p align="center" class="count-minus">-</p>
+                        <p align="center" iid="'.$row["cart_id"].'" class="count-minus">-</p>
                         </li>
 
                         <li>
-                        <p align="center"><input class="count-input" maxlength="3" type="text" value="'.$row["cart_count"].'" /></p>
+                        <p align="center"><input id="input-id'.$row["cart_id"].'" iid="'.$row["cart_id"].'" class="count-input" maxlength="3" type="text" value="'.$row["cart_count"].'" /></p>
                         </li>
 
                         <li>
-                        <p align="center" class="count-plus">+</p>
+                        <p align="center" iid="'.$row["cart_id"].'" class="count-plus">+</p>
                         </li>
 
                         </ul>
                         </div>
 
-                        <div class="price-product"><h5><span class="span-count" >'.$row["cart_count"].'</span> x <span>'.$row["cart_price"].'</span></h5><p>'.$int.'</p></div>
-                        <div class="delete-cart"><a  href="cart.php?id='.$row["cart_id"].'&action=delete" ><img src="/images/bsk_item_del.png" /></a></div>
+                        <div id="tovar'.$row["cart_id"].'" class="price-product">
+                            <h5>
+                                <span class="span-count" >
+                                    '.$row["cart_count"].'
+                                </span> x <span>
+                                    '.$row["cart_price"].'
+                                </span>
+                            </h5>
+                            <p price="'.$row["cart_price"].'" >
+                                '.group_numerals($int).' руб
+                            </p>
+                        </div>
+                        <div class="delete-cart">
+                            <a  href="cart.php?id='.$row["cart_id"].'&action=delete" >
+                                <img src="/images/bsk_item_del.png" />
+                            </a>
+                        </div>
 
                         <div id="bottom-cart-line"></div>
                         </div>
@@ -423,7 +454,7 @@
                      while ($row = mysql_fetch_array($result));
                      
                      echo '
-                     <h2 class="itog-price" align="right">Итого: <strong>'.$all_price.'</strong> руб.</h2>
+                     <h2 class="itog-price" align="right">Итого: <strong>'.group_numerals($all_price).'</strong> руб.</h2>
                      <p align="right" class="button-next" ><a href="cart.php?action=confirm" >Далее</a></p> 
                      ';
                       
