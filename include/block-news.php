@@ -1,3 +1,6 @@
+<?php
+    defined('myeshop') or die('Доступ запрещен!');
+?>
 <!--Блок новости-->  
 <div id="block-news">
    

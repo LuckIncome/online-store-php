@@ -1,3 +1,6 @@
+<?php
+    defined('myeshop') or die('Доступ запрещен!');
+?>
 <div id="block-category">
     <p class="header-title">Категории товаров</p>
     <ul>

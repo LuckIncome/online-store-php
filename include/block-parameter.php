@@ -1,3 +1,6 @@
+<?php
+    defined('myeshop') or die('Доступ запрещен!');
+?>
 <script type="text/javascript">
 $(document).ready(function () {
     $('#blocktrackbar').trackbar({

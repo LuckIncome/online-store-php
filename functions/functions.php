@@ -1,4 +1,5 @@
 <?php
+    defined('myeshop') or die('Доступ запрещен!');
     function clear_string($cl_str) 
     {
         $cl_str = strip_tags($cl_str);

@@ -1,4 +1,5 @@
 <?php
+    define('myeshop', true);
     include("include/db_connect.php");
     include("functions/functions.php");
     session_start();
