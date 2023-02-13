@@ -257,7 +257,7 @@ $('#button-remind').click(function(){
   {
      $(".auth-loading").hide();
      $("#button-remind").show();
-     $('#message-remind').attr("class","message-remind-success").html("�� ��� e-mail ������ ������.").slideDown(400);
+     $('#message-remind').attr("class","message-remind-success").html("На ваш e-mail выслан пароль.").slideDown(400);
      
      setTimeout("$('#message-remind').html('').hide(),$('#block-remind').hide(),$('#input-email-pass').show()", 3000);
  

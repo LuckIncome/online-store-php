@@ -57,6 +57,14 @@
     </div>
     <!--Линия-->  
     <div id="top-line"></div>
+
+    <div id="block-user">
+        <div class="corner2"></div>
+        <ul>
+            <li><img src="/images/user_info.png" /><a href="profile.php">Профиль</a></li>
+            <li><img src="/images/logout.png" /><a id="logout">Выход</a></li>
+        </ul>
+    </div>
     <!--Логотип-->
     <img id="img-logo" src="/images/logo.png" />
     <!--Информационный блок-->
