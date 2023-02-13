@@ -12,7 +12,7 @@
         <!--Вход и Регистрация-->  
         <p id="reg-auth-title" align="right">
         <a href="#" class="top-auth">Вход</a>
-        <a href="#">Регистрация</a>
+        <a href="registration.php">Регистрация</a>
         </p>
     </div>
     <!--Линия-->  
