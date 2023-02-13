@@ -93,17 +93,17 @@
         <img src="/images/shop.png" /><a href="index.php">Главная</a>
         </li>
         <li>
-        <img src="/images/new-32.png" /><a href="">Новинки</a>
+        <img src="/images/new-32.png" /><a href="view_aystopper.php?go=news">Новинки</a>
         </li>
         <li>
-        <img src="/images/bestprice-32.png" /><a href="">Лидеры продаж</a>
+        <img src="/images/bestprice-32.png" /><a href="view_aystopper.php?go=leaders">Лидеры продаж</a>
         </li>
         <li>
-        <img src="/images/sale-32.png" /><a href="">Распродажа</a>
+        <img src="/images/sale-32.png" /><a href="view_aystopper.php?go=sale">Распродажа</a>
         </li>
     </ul>
     <p align="right" id="block-basket">
-        <img src="/images/cart-icon.png" /><a href="">Корзина пуста</a>
+        <img src="/images/cart-icon.png" /><a href="cart.php?action=oneclick">Корзина пуста</a>
     </p>
     <div id="nav-line"></div>
 </div>
