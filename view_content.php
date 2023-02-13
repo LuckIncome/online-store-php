@@ -7,6 +7,12 @@
 
     $id = clear_string($_GET["id"]);
 
+    $seoquery = mysql_query("SELECT seo_words,seo_description FROM table_products WHERE products_id='$id' AND visible='1'",$link);
+    If (mysql_num_rows($seoquery) > 0)
+     {
+        $resquery = mysql_fetch_array($seoquery);
+     }
+
     If ($id != $_SESSION['countid'])
     {
         $querycount = mysql_query("SELECT count FROM table_products WHERE products_id='$id'",$link);
@@ -23,7 +29,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="content-type" content="text/html;"/>
+    <meta name="Description" content="<? echo $resquery["seo_description"]; ?>"/>
+    <meta name="keywords" content="<? echo $resquery["seo_words"]; ?>" /> 
     <meta name="author" content="Helsing" />
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />

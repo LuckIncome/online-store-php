@@ -179,6 +179,7 @@ if ($_SESSION['auth_admin'] == "yes_auth")
         </div>
         <div id="block-info">
             <p id="count-style">Всего товаров - <strong><?php echo $all_count_result; ?></strong></p>
+            <p align="right" id="add-style" ><a href="add_product.php" >Добавить товар</a></p>
         </div>
 
          <ul id="block-tovar">
