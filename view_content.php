@@ -36,9 +36,11 @@
 
     <link rel="stylesheet" type="text/css" href="http://shop//fancybox/jquery.fancybox.css" />
     <script type="text/javascript" src="http://shop//fancybox/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="http://shop//js/jTabs.js"></script>
     <title>Интернет-Магазин Цифравой Техники</title>
     <script type="text/javascript">
         $(document).ready(function(){
+            $("ul.tabs").jTabs({content: ".tabs_content", animate: true, effect:"fade"});
             $(".image-modal").fancybox();             
         }); 
     </script> 
@@ -156,6 +158,23 @@
                              </div>    
                         ';
                     }
+
+                    $result = mysql_query("SELECT * FROM table_products WHERE products_id='$id' AND visible='1'",$link);
+                    $row = mysql_fetch_array($result);
+
+                    echo '
+                        <ul class="tabs">
+                            <li><a class="active" href="#" >Описание</a></li>
+                            <li><a href="#" >Характиристики</a></li>
+                            <li><a href="#" >Отзывы</a></li>   
+                        </ul>
+
+                        <div class="tabs_content">
+
+                        <div>'.$row["description"].'</div>
+                        <div>'.$row["features"].'</div>
+                        <div>
+                    ';
                 }
             ?>
         </div>        
