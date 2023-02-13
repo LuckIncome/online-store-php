@@ -48,7 +48,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="content-type" content="text/html;" />
     <meta name="author" content="Helsing" />
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />

@@ -18,7 +18,7 @@ if ($_SESSION['auth_admin'] == "yes_auth")
     <meta http-equiv="content-type" content="text/html;" />
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <title>Панель Управления - Вход</title>
+    <title>Панель Управления - Главная</title>
 </head>
 <body>
     <div id="block-body">

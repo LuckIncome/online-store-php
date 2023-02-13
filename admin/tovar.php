@@ -107,7 +107,7 @@ if ($_SESSION['auth_admin'] == "yes_auth")
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
     <script type="text/javascript" src="js/script.js"></script> 
     <script type="text/javascript" src="jquery_confirm/jquery_confirm.js"></script> 
-    <title>Панель Управления - Вход</title>
+    <title>Панель Управления - Товары</title>
 </head>
 <body>
     <div id="block-body">
