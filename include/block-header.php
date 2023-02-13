@@ -81,9 +81,10 @@
     <div id="block-search">
         <form method="GET" action="search.php?q=">
             <span></span>
-            <input type="text" id="input-search" name="q" placeholder="Поиск среди более 100 000 товаров" />
+            <input type="text" id="input-search" name="q" placeholder="Поиск среди более 100 000 товаров" value="<?php echo $search; ?>" />
             <input type="submit" id="button-search" value="Поиск" />
         </form>
+        <ul id="result-search"></ul>
     </div>
 </div>
 <div id="top-menu">

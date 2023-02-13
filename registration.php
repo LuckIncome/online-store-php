@@ -22,6 +22,7 @@
     <script type="text/javascript" src="/trackbar/jquery.trackbar.js"></script>
     <script type="text/javascript" src="/js/jquery.form.js"></script>
     <script type="text/javascript" src="/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/TextChange.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {	
       $('#form_reg').validate(
