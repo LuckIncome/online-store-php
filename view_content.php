@@ -33,7 +33,15 @@
     <script type="text/javascript" src="js/jquery.cookie.min.js"></script>
     <script type="text/javascript" src="trackbar/jquery.trackbar.js"></script>
     <script type="text/javascript" src="js/TextChange.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://shop//fancybox/jquery.fancybox.css" />
+    <script type="text/javascript" src="http://shop//fancybox/jquery.fancybox.js"></script>
     <title>Интернет-Магазин Цифравой Техники</title>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".image-modal").fancybox();             
+        }); 
+    </script> 
 </head>
 <body>
     <div id="block-body">       
@@ -113,7 +121,41 @@
 
                 ';                   
                 }   
-                    while ($row1 = mysql_fetch_array($result1));                   
+                    while ($row1 = mysql_fetch_array($result1));
+
+                    $result = mysql_query("SELECT * FROM uploads_images WHERE products_id='$id'",$link);
+                    If (mysql_num_rows($result) > 0)
+                    {
+                        $row = mysql_fetch_array($result);
+                        echo '<div id="block-img-slide">
+                              <ul>';
+                    do
+                    {
+                        $img_path = './uploads_images/'.$row["image"];
+                        $max_width = 70; 
+                        $max_height = 70; 
+                         list($width, $height) = getimagesize($img_path); 
+                        $ratioh = $max_height/$height; 
+                        $ratiow = $max_width/$width; 
+                        $ratio = min($ratioh, $ratiow); 
+
+                        $width = intval($ratio*$width); 
+                        $height = intval($ratio*$height);    
+                            
+                            
+                        echo '
+                        <li>
+                        <a class="image-modal" href="#image'.$row["id"].'"><img src="'.$img_path.'" width="'.$width.'" height="'.$height.'" /></a>
+                        </li>
+                        <a style="display:none;" class="image-modal" rel="group" id="image'.$row["id"].'" ><img  src="./uploads_images/'.$row["image"].'" /></a>
+                        ';
+                    }
+                     while ($row = mysql_fetch_array($result));
+                        echo '
+                             </ul>
+                             </div>    
+                        ';
+                    }
                 }
             ?>
         </div>        
