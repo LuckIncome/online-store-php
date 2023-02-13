@@ -7,7 +7,7 @@
             </a>
         
             <ul class="category-section">
-                <li><a href=""><strong>Все модели</strong> </a></li>
+                <li><a href="view_cat.php?type=mobile"><strong>Все модели</strong> </a></li>
                 <?php
                     $result = mysql_query("SELECT * FROM category WHERE type = 'mobile'", $link);
                     if (mysql_num_rows($result) > 0)
@@ -31,7 +31,7 @@
             </a>
         
             <ul class="category-section">
-                <li><a href=""><strong>Все модели</strong> </a></li>
+                <li><a href="view_cat.php?type=notebook"><strong>Все модели</strong> </a></li>
                 <?php
                     $result = mysql_query("SELECT * FROM category WHERE type = 'notebook'", $link);
                     if (mysql_num_rows($result) > 0)
@@ -55,7 +55,7 @@
             </a>
         
             <ul class="category-section">
-                <li><a href=""><strong>Все модели</strong> </a></li>
+                <li><a href="view_cat.php?type=notepad"><strong>Все модели</strong> </a></li>
                 <?php
                     $result = mysql_query("SELECT * FROM category WHERE type = 'notepad'", $link);
                     if (mysql_num_rows($result) > 0)
