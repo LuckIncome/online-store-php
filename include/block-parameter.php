@@ -1,8 +1,43 @@
+<?php
+    defined('myeshop') or die('Доступ запрещен!');
+?>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#blocktrackbar').trackbar({
+        onMove: function () {
+            document.getElementById("start-price").value = this.leftValue;
+            document.getElementById("end-price").value = this.rightValue;
+        },
+        width: 160,
+        leftLimit: 1000,
+        leftValue: <?php
+            if ((int)$_GET["start_price"] >= 1000 AND (int)$_GET["start_price"] <= 50000) 
+            {
+                echo (int)$_GET["start_price"];
+            } else 
+            {
+                echo "1000";
+            }
+        ?>,
+        rightLimit: 50000,
+        rightValue: <?php
+            if ((int)$_GET["end_price"] >= 1000 AND (int)$_GET["end_price"] <= 50000) 
+            {
+                echo (int)$_GET["start_price"];
+            } else 
+            {
+                echo "30000";
+            }
+        ?>,
+        roundUp: 1000
+    });
+});
+</script>
 <!--Блок параметров-->  
 <div id="block-parameter">
     <p class="header-title">Поиск по параметрам</p>
     <p class="title-filter">Стоимость</p>
-    <form method="GET" action="search-filter">
+    <form method="GET" action="search_filter.php">
         <div id="block-input-price">
             <ul>
                 <li><p>от</p></li>
@@ -16,9 +51,33 @@
         
          <p class="title-filter">Производители</p>
          <ul class="checkbox-brand">
-             <li><input type="checkbox" id="checkbrend1" /><label for="checkbrend1">Бренд 1</label></li>
-             <li><input type="checkbox" id="checkbrend2" /><label for="checkbrend2">Бренд 2</label></li>
-             <li><input type="checkbox" id="checkbrend3" /><label for="checkbrend3">Бренд 3</label></li>
+             <?php
+                $result = mysql_query("SELECT * FROM category WHERE type = 'mobile'", $link);
+                if (mysql_num_rows($result) > 0)
+                {
+                    $row = mysql_fetch_array($result);
+                    do
+                    {
+                        $checked_brand = "";
+                        if ($_GET["brand"]) 
+                        {
+                            if (in_array($row["id"], $_GET["brand"]))
+                            {
+                                $checked_brand = "checked";
+                            }
+                        }
+                        echo '
+                            <li>
+                                <input '.$checked_brand.' type="checkbox" name="brand[]" value="'.$row["id"].'" id="checkbrend'.$row["id"].'" />
+                                <label for="checkbrend'.$row["id"].'">
+                                    '.$row["brand"].'
+                                </label>
+                            </li>
+                        ';
+                    }
+                    while ($row = mysql_fetch_array($result));
+                }
+             ?>    
          </ul>
          <center><input type="submit" name="submit" id="button-param-search" value="" /></center>
     </form>

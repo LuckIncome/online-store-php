@@ -1,3 +1,6 @@
+<?php
+    defined('myeshop') or die('Доступ запрещен!');
+?>
 <div id="block-footer">
     <div id="bottom-line"></div>
     <div id="footer-phone">
