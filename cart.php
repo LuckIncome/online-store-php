@@ -136,7 +136,7 @@
                         </div>
 
                         <div class="title-cart">
-                        <p><a href="">'.$row["title"].'</a></p>
+                        <p><a href="view_content.php?id='.$row["products_id"].'">'.$row["title"].'</a></p>
                         <p class="cart-mini-features">
                         '.$row["mini_features"].'
                         </p>
@@ -405,7 +405,7 @@
                         </div>
 
                         <div class="title-cart">
-                        <p><a href="">'.$row["title"].'</a></p>
+                        <p><a href="view_content.php?id='.$row["products_id"].'">'.$row["title"].'</a></p>
                         <p class="cart-mini-features">
                         '.$row["mini_features"].'
                         </p>
