@@ -67,7 +67,6 @@
                                     <li><img id="style-grid" src="images/icon-grid.png" /></li>
                                     <li><img id="style-list" src="images/icon-list.png" /></li>
 
-                                    <li>Сортировать:</li>
                                     <li><a id="select-sort">'.$sort_name.'</a>
                                         <ul id="sorting-list">
                                             <li><a href="view_cat.php?'.$catlink.'type='.$type.'&sort=price-asc">От дешевых к дорогим</a></li>
