@@ -10,7 +10,7 @@ $(document).ready(function() {
 		speed:500
 	});
 
-loadcart();
+
 
 $("#style-grid").click(function(){
     
@@ -334,13 +334,12 @@ if (input_search.length >= 3 && input_search.length < 150 )
 });
 
 
-
-    //������ �������� email �� ������������
+    //Шаблон проверки email на правильность
     function isValidEmailAddress(emailAddress) {
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
     return pattern.test(emailAddress);
     }
- // ���������� ������
+ // Контактные данные
   $('#confirm-button-next').click(function(e){   
 
    var order_fio = $("#order_fio").val();
@@ -356,7 +355,7 @@ if (input_search.length >= 3 && input_search.length < 150 )
  }else { $(".label_delivery").css("color","black"); send_order_delivery = '1';
 
   
-  // �������� ��� 
+  // Проверка ФИО
  if (order_fio == "" || order_fio.length > 50 )
  {
     $("#order_fio").css("borderColor","#FDB6B6");
@@ -365,14 +364,14 @@ if (input_search.length >= 3 && input_search.length < 150 )
  }else { $("#order_fio").css("borderColor","#DBDBDB");  send_order_fio = '1';}
 
   
- //�������� email
+ //Проверка email
  if (isValidEmailAddress(order_email) == false)
  {
     $("#order_email").css("borderColor","#FDB6B6");
   send_order_email = '0';   
  }else { $("#order_email").css("borderColor","#DBDBDB"); send_order_email = '1';}
   
- // �������� ��������
+ // Проверка телефона
  
   if (order_phone == "" || order_phone.length > 50)
  {
@@ -380,7 +379,7 @@ if (input_search.length >= 3 && input_search.length < 150 )
     send_order_phone = '0';   
  }else { $("#order_phone").css("borderColor","#DBDBDB"); send_order_phone = '1';}
  
- // �������� �������
+ // Проверка Адресса
  
   if (order_address == "" || order_address.length > 150)
  {
@@ -389,10 +388,10 @@ if (input_search.length >= 3 && input_search.length < 150 )
  }else { $("#order_address").css("borderColor","#DBDBDB"); send_order_address = '1';}
   
 } 
- // ���������� ��������
+ // Глобальная проверка
  if (send_order_delivery == "1" && send_order_fio == "1" && send_order_email == "1" && send_order_phone == "1" && send_order_address == "1")
  {
-    // ���������� �����
+    // Отправляем форму
    return true;
  }
 
@@ -400,265 +399,5 @@ e.preventDefault();
 
 });
 
-
-
-$('.add-cart-style-list,.add-cart-style-grid,.add-cart,.random-add-cart').click(function(){
-              
- var  tid = $(this).attr("tid");
-
- $.ajax({
-  type: "POST",
-  url: "/include/addtocart.php",
-  data: "id="+tid,
-  dataType: "html",
-  cache: false,
-  success: function(data) { 
-  loadcart();
-      }
-});
-
-});
-
-function loadcart(){
-     $.ajax({
-  type: "POST",
-  url: "/include/loadcart.php",
-  dataType: "html",
-  cache: false,
-  success: function(data) {
-    
-  if (data == "0")
-  {
-  
-    $("#block-basket > a").html("������� �����");
-	
-  }else
-  {
-    $("#block-basket > a").html(data);
-
-  }  
-    
-      }
-});    
-       
-}
-
-
- function fun_group_price(intprice) {  
-    // ����������� ���� �� ��������
-  var result_total = String(intprice);
-  var lenstr = result_total.length;
-  
-    switch(lenstr) {
-  case 4: {
-  groupprice = result_total.substring(0,1)+" "+result_total.substring(1,4);
-    break;
-  }
-  case 5: {
-  groupprice = result_total.substring(0,2)+" "+result_total.substring(2,5);
-    break;
-  }
-  case 6: {
-  groupprice = result_total.substring(0,3)+" "+result_total.substring(3,6); 
-    break;
-  }
-  case 7: {
-  groupprice = result_total.substring(0,1)+" "+result_total.substring(1,4)+" "+result_total.substring(4,7); 
-    break;
-  }
-  default: {
-  groupprice = result_total;  
-  }
-}  
-    return groupprice;
-    }
-
-
-
-$('.count-minus').click(function(){
-
-  var iid = $(this).attr("iid");      
- 
- $.ajax({
-  type: "POST",
-  url: "/include/count-minus.php",
-  data: "id="+iid,
-  dataType: "html",
-  cache: false,
-  success: function(data) {   
-  $("#input-id"+iid).val(data);  
-  loadcart();
-  
-  // ���������� � ������ ��������
-  var priceproduct = $("#tovar"+iid+" > p").attr("price"); 
-  // ���� �������� �� �����������
-  result_total = Number(priceproduct) * Number(data);
- 
-  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" ���");
-  $("#tovar"+iid+" > h5 > .span-count").html(data);
-  
-  itog_price();
-      }
-});
-  
-});
-
-$('.count-plus').click(function(){
-
-  var iid = $(this).attr("iid");      
-  
- $.ajax({
-  type: "POST",
-  url: "/include/count-plus.php",
-  data: "id="+iid,
-  dataType: "html",
-  cache: false,
-  success: function(data) {   
-  $("#input-id"+iid).val(data);  
-  loadcart();
-  
-  // ���������� � ������ ��������
-  var priceproduct = $("#tovar"+iid+" > p").attr("price"); 
-  // ���� �������� �� �����������
-  result_total = Number(priceproduct) * Number(data);
- 
-  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" ���");
-  $("#tovar"+iid+" > h5 > .span-count").html(data);
-  
-  itog_price();
-      }
-});
-  
-});
-
- $('.count-input').keypress(function(e){
-    
- if(e.keyCode==13){
-	   
- var iid = $(this).attr("iid");
- var incount = $("#input-id"+iid).val();        
- 
- $.ajax({
-  type: "POST",
-  url: "/include/count-input.php",
-  data: "id="+iid+"&count="+incount,
-  dataType: "html",
-  cache: false,
-  success: function(data) {
-  $("#input-id"+iid).val(data);  
-  loadcart();
-    
-  // ���������� � ������ ��������
-  var priceproduct = $("#tovar"+iid+" > p").attr("price"); 
-  // ���� �������� �� �����������
-  result_total = Number(priceproduct) * Number(data);
-
-
-  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" ���");
-  $("#tovar"+iid+" > h5 > .span-count").html(data);
-  itog_price();
-
-      }
-}); 
-  }
-});
-
-function  itog_price(){
- 
- $.ajax({
-  type: "POST",
-  url: "/include/itog_price.php",
-  dataType: "html",
-  cache: false,
-  success: function(data) {
-
-  $(".itog-price > strong").html(data);
-
-}
-}); 
-       
-}
-
-
-$('#button-send-review').click(function(){
-                
-   var name = $("#name_review").val();
-   var good = $("#good_review").val();
-   var bad = $("#bad_review").val();
-   var comment = $("#comment_review").val();
-   var iid = $("#button-send-review").attr("iid");
-
-    if (name != "")
-     {
-          name_review = '1';
-          $("#name_review").css("borderColor","#DBDBDB");
-      }else {
-           name_review = '0';
-           $("#name_review").css("borderColor","#FDB6B6");
-      }
-                  
-    if (good != "")
-       {
-          good_review = '1';
-          $("#good_review").css("borderColor","#DBDBDB");
-      }else {
-          good_review = '0';
-          $("#good_review").css("borderColor","#FDB6B6");
-      }
-            
-    if (bad != "")
-     {
-          bad_review = '1';
-          $("#bad_review").css("borderColor","#DBDBDB");
-     }else {
-          bad_review = '0';
-          $("#bad_review").css("borderColor","#FDB6B6");
-     } 
-                                         
-            
-            // ���������� �������� � �������� ������
-            
-    if ( name_review == '1' && good_review == '1' && bad_review == '1')
-      {
-         $("#button-send-review").hide();
-         $("#reload-img").show();
-                  
-      $.ajax({
-         type: "POST",
-         url: "/include/add_review.php",
-         data: "id="+iid+"&name="+name+"&good="+good+"&bad="+bad+"&comment="+comment,
-         dataType: "html",
-         cache: false,
-         success: function() {
-         setTimeout("$.fancybox.close()", 1000);
-         }
-         });  
-         }         
-});
-
-$('#likegood').click(function(){
-          
- var tid = $(this).attr("tid");
- 
- $.ajax({
-  type: "POST",
-  url: "/include/like.php",
-  data: "id="+tid,
-  dataType: "html",
-  cache: false,
-  success: function(data) {  
-  
-  if (data == 'no')
-  {
-    alert('�� ��� ����������!');
-  }  
-   else
-   {
-    $("#likegoodcount").html(data);
-   }
-
-}
-});
-});
 
 });
