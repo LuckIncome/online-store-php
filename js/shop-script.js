@@ -631,4 +631,29 @@ $('#button-send-review').click(function(){
 });
 
 
+$('#likegood').click(function(){
+          
+ var tid = $(this).attr("tid");
+ 
+ $.ajax({
+  type: "POST",
+  url: "/include/like.php",
+  data: "id="+tid,
+  dataType: "html",
+  cache: false,
+  success: function(data) {  
+  
+  if (data == 'no')
+  {
+    alert('Вы уже голосовали!');
+  }  
+   else
+   {
+    $("#likegoodcount").html(data);
+   }
+
+}
+});
+});
+
 });

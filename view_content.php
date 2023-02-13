@@ -96,6 +96,9 @@
                 <p id="nav-breadcrumbs">
                     <a href="view_mobile.php">Мобильные телефоны</a> \ <span>'.$row1["brand"].'</span>
                 </p>
+                <div id="block-like">
+                    <p id="likegood" tid="'.$id.'" >Нравится</p><p id="likegoodcount" >'.$row1["yes_like"].'</p>
+                </div>
                 </div>
 
                 <div id="block-content-info">
