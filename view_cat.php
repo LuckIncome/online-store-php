@@ -1,6 +1,9 @@
 <?php
     include("include/db_connect.php");
 
+    $cat = $_GET["cat"];
+    $type = $_GET["type"];
+    
     $sorting = $_GET["sort"];
     switch ($sorting) 
     {
@@ -35,8 +38,10 @@
         break;
     }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=windows-1251" />
@@ -49,18 +54,19 @@
     <script type="text/javascript" src="js/jquery.cookie.min.js"></script>
     <title>Интернет-Магазин Цифравой Техники</title>
 </head>
+
 <body>
-    <div id="block-body">       
+    <div id="block-body">
         <?php
         include("include/block-header.php");
-        ?>          
+        ?>
         <div id="block-right">
             <?php
                 include("include/block-category.php");
                 include("include/block-parameter.php");
                 include("include/block-news.php");
-            ?>   
-        </div>          
+            ?>
+        </div>
         <div id="block-content">
             <div id="block-sorting">
                 <p id="nav-breadcrumbs"><a href="index.php">Главная страница</a> \ <span>Все товары</span></p>
@@ -68,7 +74,7 @@
                     <li>Вид: </li>
                     <li><img id="style-grid" src="images/icon-grid.png" /></li>
                     <li><img id="style-list" src="images/icon-list.png" /></li>
-                    
+
                     <li>Сортировать:</li>
                     <li><a id="select-sort"><?php echo $sort_name; ?></a>
                         <ul id="sorting-list">
@@ -81,7 +87,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <ul id="block-tovar-grid">
                 <?php
                     $result = mysql_query("SELECT * FROM table_products WHERE visible = '1' ORDER BY $sorting", $link);
@@ -177,11 +183,11 @@
                     }
                 ?>
             </ul>
-        </div>        
+        </div>
         <?php
             include("include/block-footer.php");
-        ?>          
+        ?>
     </div>
 </body>
-</html>
 
+</html>
