@@ -123,7 +123,7 @@ $('#button-pass-show-hide').click(function(){
        
      			            var $input = $("#auth_pass");
 			                var change = "text";
-			                var rep = $("<input placeholder='Пароль' type='" + change + "' />")
+			                var rep = $("<input placeholder='РџР°СЂРѕР»СЊ' type='" + change + "' />")
 			                    .attr("id", $input.attr("id"))
 			                    .attr("name", $input.attr("name"))
 			                    .attr('class', $input.attr('class'))
@@ -138,7 +138,7 @@ $('#button-pass-show-hide').click(function(){
         
      			            var $input = $("#auth_pass");
 			                var change = "password";
-			                var rep = $("<input placeholder='Пароль' type='" + change + "' />")
+			                var rep = $("<input placeholder='РџР°СЂРѕР»СЊ' type='" + change + "' />")
 			                    .attr("id", $input.attr("id"))
 			                    .attr("name", $input.attr("name"))
 			                    .attr('class', $input.attr('class'))
@@ -257,7 +257,7 @@ $('#button-remind').click(function(){
   {
      $(".auth-loading").hide();
      $("#button-remind").show();
-     $('#message-remind').attr("class","message-remind-success").html("На ваш e-mail выслан пароль.").slideDown(400);
+     $('#message-remind').attr("class","message-remind-success").html("пїЅпїЅ пїЅпїЅпїЅ e-mail пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.").slideDown(400);
      
      setTimeout("$('#message-remind').html('').hide(),$('#block-remind').hide(),$('#input-email-pass').show()", 3000);
  
@@ -335,12 +335,12 @@ if (input_search.length >= 3 && input_search.length < 150 )
 
 
 
-    //Шаблон проверки email на правильность
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ email пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     function isValidEmailAddress(emailAddress) {
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
     return pattern.test(emailAddress);
     }
- // Контактные данные
+ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
   $('#confirm-button-next').click(function(e){   
 
    var order_fio = $("#order_fio").val();
@@ -356,7 +356,7 @@ if (input_search.length >= 3 && input_search.length < 150 )
  }else { $(".label_delivery").css("color","black"); send_order_delivery = '1';
 
   
-  // Проверка ФИО 
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ 
  if (order_fio == "" || order_fio.length > 50 )
  {
     $("#order_fio").css("borderColor","#FDB6B6");
@@ -365,14 +365,14 @@ if (input_search.length >= 3 && input_search.length < 150 )
  }else { $("#order_fio").css("borderColor","#DBDBDB");  send_order_fio = '1';}
 
   
- //проверка email
+ //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ email
  if (isValidEmailAddress(order_email) == false)
  {
     $("#order_email").css("borderColor","#FDB6B6");
   send_order_email = '0';   
  }else { $("#order_email").css("borderColor","#DBDBDB"); send_order_email = '1';}
   
- // Проверка телефона
+ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
  
   if (order_phone == "" || order_phone.length > 50)
  {
@@ -380,7 +380,7 @@ if (input_search.length >= 3 && input_search.length < 150 )
     send_order_phone = '0';   
  }else { $("#order_phone").css("borderColor","#DBDBDB"); send_order_phone = '1';}
  
- // Проверка Адресса
+ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
  
   if (order_address == "" || order_address.length > 150)
  {
@@ -389,10 +389,10 @@ if (input_search.length >= 3 && input_search.length < 150 )
  }else { $("#order_address").css("borderColor","#DBDBDB"); send_order_address = '1';}
   
 } 
- // Глобальная проверка
+ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
  if (send_order_delivery == "1" && send_order_fio == "1" && send_order_email == "1" && send_order_phone == "1" && send_order_address == "1")
  {
-    // Отправляем форму
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
    return true;
  }
 
@@ -430,7 +430,7 @@ function loadcart(){
   if (data == "0")
   {
   
-    $("#block-basket > a").html("Корзина пуста");
+    $("#block-basket > a").html("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
 	
   }else
   {
@@ -445,7 +445,7 @@ function loadcart(){
 
 
  function fun_group_price(intprice) {  
-    // Группировка цифр по разрядам
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   var result_total = String(intprice);
   var lenstr = result_total.length;
   
@@ -489,12 +489,12 @@ $('.count-minus').click(function(){
   $("#input-id"+iid).val(data);  
   loadcart();
   
-  // переменная с ценной продукта
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   var priceproduct = $("#tovar"+iid+" > p").attr("price"); 
-  // Цену умножаем на колличество
+  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   result_total = Number(priceproduct) * Number(data);
  
-  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" руб");
+  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" пїЅпїЅпїЅ");
   $("#tovar"+iid+" > h5 > .span-count").html(data);
   
   itog_price();
@@ -517,12 +517,12 @@ $('.count-plus').click(function(){
   $("#input-id"+iid).val(data);  
   loadcart();
   
-  // переменная с ценной продукта
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   var priceproduct = $("#tovar"+iid+" > p").attr("price"); 
-  // Цену умножаем на колличество
+  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   result_total = Number(priceproduct) * Number(data);
  
-  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" руб");
+  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" пїЅпїЅпїЅ");
   $("#tovar"+iid+" > h5 > .span-count").html(data);
   
   itog_price();
@@ -548,13 +548,13 @@ $('.count-plus').click(function(){
   $("#input-id"+iid).val(data);  
   loadcart();
     
-  // переменная с ценной продукта
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   var priceproduct = $("#tovar"+iid+" > p").attr("price"); 
-  // Цену умножаем на колличество
+  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   result_total = Number(priceproduct) * Number(data);
 
 
-  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" руб");
+  $("#tovar"+iid+" > p").html(fun_group_price(result_total)+" пїЅпїЅпїЅ");
   $("#tovar"+iid+" > h5 > .span-count").html(data);
   itog_price();
 
@@ -616,7 +616,7 @@ $('#button-send-review').click(function(){
      } 
                                          
             
-            // Глобальная проверка и отправка отзыва
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             
     if ( name_review == '1' && good_review == '1' && bad_review == '1')
       {
@@ -650,7 +650,7 @@ $('#likegood').click(function(){
   
   if (data == 'no')
   {
-    alert('Вы уже голосовали!');
+    alert('пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!');
   }  
    else
    {

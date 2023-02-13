@@ -9,11 +9,16 @@
             <li><a href="magaziny.php">Магазины</a></li>
             <li><a href="contacts.php">Контакты</a></li>
         </ul>
-        <!--Вход и Регистрация-->  
-        <p id="reg-auth-title" align="right">
-        <a href="#" class="top-auth">Вход</a>
-        <a href="registration.php">Регистрация</a>
-        </p>
+        <!--Вход и Регистрация--> 
+        <?php
+            if ($_SESSION['auth'] == 'yes_auth') 
+            {
+                echo '<p id="auth-user-info" align="right"><img src="/images/user.png" />Здраствуйте, '.$_SESSION['auth_name'].'!</p>';
+            } else 
+            {
+                echo '<p id="reg-auth-title" align="right"><a class="top-auth">Вход</a><a href="registration.php">Регистрация</a></p>';
+            }
+        ?> 
 
         <div id="block-top-auth">
             <div class="corner"></div>
@@ -22,7 +27,12 @@
                     <h3>Вход</h3>
                     <p id="message-auth">Неверный Логин и(или) Пароль</p>
                     <li><center><input type="text" id="auth_login" placeholder="Логин или E-mail" /></center></li>
-                    <li><center><input type="text" id="auth_pass" placeholder="Пароль" /></center></li>
+                    <li>
+                        <center>
+                            <input type="text" id="auth_pass" placeholder="Пароль" />
+                            <span id="button-pass-show-hide" class="pass-show"></span>
+                        </center>
+                    </li>
                     <ul id="list-auth">
                         <li>
                             <input type="checkbox" name="rememberme" id="rememberme" /> 
